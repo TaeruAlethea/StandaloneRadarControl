@@ -2,9 +2,13 @@
   "DcsSavedGames": "",
   "DiscordPresenceServerName": "",
   "ServerToClientPort": 7500,
-  "ServerToDcsPort": 7600,
-  "DcsToServerPort": 7700,
   "SimultaneousConnectionsAllowed": true,
+  "DCSServerSettings":{
+    "HostName": "localhost",
+    "ServerToDcsPort": 7600,
+    "Password": "",
+    "DcsToServerPort": 7700
+  },
   "ExportMethods": {
     "Global": true,
     "SemiReal": true,

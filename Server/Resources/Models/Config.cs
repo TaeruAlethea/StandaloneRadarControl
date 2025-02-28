@@ -26,13 +26,21 @@ public class Config
 	public string DcsSavedGames { get; set; } = string.Empty;
 	public string DiscordPresenceServerName { get; set; } = string.Empty;
 	public int ServerToClientPort { get; set; } = 7500;
-	public int ServerToDcsPort { get; set; } = 7600;
-	public int DcsToServerPort { get; set; } = 7700;
 	public bool SimultaneousConnectionsAllowed { get; set; } = true;
+	public DcsServerSettings DcsServerSettings { get; set; } = new DcsServerSettings();
 	public ExportMethods ExportMethods { get; set; } = new ExportMethods();
 
 	public List<CoalitionDetail> CoalitionDetails { get; set; } = new List<CoalitionDetail>();
 }
+
+public class DcsServerSettings
+{
+	public string HostName { get; set; } = "localhost";
+	public int ServerToDcsPort { get; set; } = 7600;
+	public string Password { get; set; } = string.Empty;
+	public int DcsToServerPort { get; set; } = 7700;
+}
+
 public class ExportMethods
 {
 	public bool Global { get; set; } = true;
