@@ -3,7 +3,7 @@
   "DiscordPresenceServerName": "",
   "ServerToClientPort": 7500,
   "SimultaneousConnectionsAllowed": true,
-  "DCSServerSettings":{
+  "DcsServerSettings":{
     "HostName": "localhost",
     "SrcToDcsPort": 7600,
     "Password": "",
