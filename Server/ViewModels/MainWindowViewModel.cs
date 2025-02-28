@@ -41,7 +41,7 @@ public class MainWindowViewModel : ViewModelBase
 		
 		Console.WriteLine(JsonConvert.SerializeObject(Config, Formatting.Indented));
 		
-		ServerModel = new TcpUdpServerModel(this);
+		ServerModel = new TcpRpcServerModel(this);
 	}
 
 	public bool StartServer()

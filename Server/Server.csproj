@@ -23,8 +23,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Google.Protobuf" Version="3.29.3" />
 		<PackageReference Include="Grpc.Net.Client" Version="2.67.0" />
+		<PackageReference Include="Grpc.Tools" Version="2.70.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
+		<PackageReference Include="RurouniJones.Dcs.Grpc" Version="0.7.1" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -32,9 +38,11 @@
 		<Resource Include="Images\Minimize.png"/>
 		<Resource Include="Images\ShowPassword.png"/>
 	</ItemGroup>
-
+	
+	<!--
 	<ItemGroup>
-	  <Folder Include="Resources\Protos\" />
+		<Protobuf Include="Resources\Protos\**\*.proto" GrpcServices="Client" link="Protos/dcs.proto" />
+		<Resource Include="Resources\Protos\**\*.proto"/>
 	</ItemGroup>
-
+	!-->
 </Project>
