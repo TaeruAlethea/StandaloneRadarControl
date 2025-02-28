@@ -5,9 +5,9 @@
   "SimultaneousConnectionsAllowed": true,
   "DCSServerSettings":{
     "HostName": "localhost",
-    "ServerToDcsPort": 7600,
+    "SrcToDcsPort": 7600,
     "Password": "",
-    "DcsToServerPort": 7700
+    "DcsToSrcPort": 7700
   },
   "ExportMethods": {
     "Global": true,
