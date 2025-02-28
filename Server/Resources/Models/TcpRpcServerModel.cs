@@ -67,7 +67,7 @@ public class TcpRpcServerModel : ModelBase, IServerModel
 		
 		//var channel = CreateChannel("localhost", "50051", "SomeToken");
 		var channel = CreateChannel(serverSettings.HostName, 
-			serverSettings.ServerToDcsPort.ToString(), 
+			serverSettings.SrcToDcsPort.ToString(), 
 			serverSettings.Password);
 		
 		
