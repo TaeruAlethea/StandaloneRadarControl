@@ -61,11 +61,12 @@ public class TcpRpcServerModel : ModelBase, IServerModel
 	{
 		ViewModel = viewModel;
 		
-		TcpServerHandler = new TcpServerHandler(this, viewModel.Config);
+		TcpServerHandler = new TcpServerHandler(this, viewModel.Config); // Export to Clients
 
+		
+		// Import from DCS
 		DcsServerSettings serverSettings = viewModel.Config.DcsServerSettings;
 		
-		//var channel = CreateChannel("localhost", "50051", "SomeToken");
 		var channel = CreateChannel(serverSettings.HostName, 
 			serverSettings.SrcToDcsPort.ToString(), 
 			serverSettings.Password);

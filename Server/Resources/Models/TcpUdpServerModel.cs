@@ -57,8 +57,8 @@ public class TcpUdpServerModel : ModelBase, IServerModel
 	{
 		ViewModel = viewModel;
 		
-		TcpServerHandler = new TcpServerHandler(this, viewModel.Config);
-		UdpServerHandler = new UdpServerHandler(this, viewModel.Config);
+		TcpServerHandler = new TcpServerHandler(this, viewModel.Config); //Export to Clients
+		UdpServerHandler = new UdpServerHandler(this, viewModel.Config); //Import from DCS
 	}
 	
 	public bool StartServer()
