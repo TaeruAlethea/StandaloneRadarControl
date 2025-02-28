@@ -20,7 +20,7 @@ public class UdpServerHandler(IServerModel serverModel, Config config)
 	{
 		try
 		{
-			var port = config.ServerToClientPort;
+			var port = config.DcsServerSettings.SrcToDcsPort;
 			if (port == -1) throw new Exception("Could not get config DCS_TO_SERVER_PORT");
 
 			cancellationTokenSource = new CancellationTokenSource();
