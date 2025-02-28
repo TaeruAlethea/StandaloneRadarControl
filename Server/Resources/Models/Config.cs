@@ -36,9 +36,9 @@ public class Config
 public class DcsServerSettings
 {
 	public string HostName { get; set; } = "localhost";
-	public int ServerToDcsPort { get; set; } = 7600;
+	public int SrcToDcsPort { get; set; } = 7600;
 	public string Password { get; set; } = string.Empty;
-	public int DcsToServerPort { get; set; } = 7700;
+	public int DcsToSrcPort { get; set; } = 7700;
 }
 
 public class ExportMethods
