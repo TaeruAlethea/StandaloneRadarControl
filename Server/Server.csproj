@@ -23,6 +23,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Grpc.Net.Client" Version="2.67.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
 	</ItemGroup>
 
@@ -30,6 +31,10 @@
 		<Resource Include="Images\Close.png"/>
 		<Resource Include="Images\Minimize.png"/>
 		<Resource Include="Images\ShowPassword.png"/>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Resources\Protos\" />
 	</ItemGroup>
 
 </Project>
