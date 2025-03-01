@@ -1,9 +1,4 @@
-﻿using System.Text;
-using Grpc.Core;
-using Grpc.Net.Client;
-using RurouniJones.Dcs.Grpc.V0.Atmosphere;
-using RurouniJones.Dcs.Grpc.V0.Common;
-using RurouniJones.Dcs.Grpc.V0.Mission;
+﻿using System.Collections.Concurrent;
 using Server.Network;
 using Server.Resources.Interfaces;
 using Server.ViewModels;
@@ -12,7 +7,7 @@ namespace Server.Resources.Models;
 
 public class TcpRpcServerModel : ModelBase, IServerModel
 {
-	private MainWindowViewModel ViewModel;
+	private MainWindowViewModel viewModel;
 	
 	private int clientCount;
 	public int ClientCount
@@ -56,34 +51,26 @@ public class TcpRpcServerModel : ModelBase, IServerModel
 	}
 
 	private TcpServerHandler TcpServerHandler { get; init; }
+	private gRPCImportHandler GRpcImportHandler { get; init; }
+	public ConcurrentQueue<Unit> UpdateQueue { get; set; }
 	
 	public TcpRpcServerModel(MainWindowViewModel viewModel)
 	{
-		ViewModel = viewModel;
+		this.viewModel = viewModel;
 		
+		GRpcImportHandler = new gRPCImportHandler(viewModel.Config.DcsServerSettings); //Import from DCS
 		TcpServerHandler = new TcpServerHandler(this, viewModel.Config); // Export to Clients
-
-		
-		// Import from DCS
-		DcsServerSettings serverSettings = viewModel.Config.DcsServerSettings;
-		
-		var channel = CreateChannel(serverSettings.HostName, 
-			serverSettings.SrcToDcsPort.ToString(), 
-			serverSettings.Password);
-		
-		
-		var client = new MissionService.MissionServiceClient(channel);
-		
-		// Timeout or hanging occurs when the server is not Running or the Mission is paused.
-		var response = client.GetScenarioCurrentTime(new GetScenarioCurrentTimeRequest { });
-
-		Console.WriteLine($"Current mission time: {response.Datetime}");
 	}
 	
 	public bool StartServer()
 	{
 		bool tcpActive = TcpServerHandler.Start();
-		return tcpActive;
+		bool gRpcActive = GRpcImportHandler.Start();
+
+		if (gRpcActive && !tcpActive) { GRpcImportHandler.Stop(); } // If TCP fails to start, Stop the other.
+		if (tcpActive && !gRpcActive) { _ = TcpServerHandler.StopAsync(); }	 // If gRPC fails to start, stop the other.
+		
+		return tcpActive && gRpcActive;
 	}
 
 	public bool StopServer()
@@ -92,22 +79,5 @@ public class TcpRpcServerModel : ModelBase, IServerModel
 		return false;
 	}
 	
-	public GrpcChannel CreateChannel(string host, string port, string? apiKey)
-	{
-		GrpcChannelOptions options = new GrpcChannelOptions();
-		if (apiKey != null)
-		{
-			CallCredentials credentials = CallCredentials.FromInterceptor(async (context, metadata) =>
-			{
-				metadata.Add("X-API-Key", Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(apiKey)) );
-			});
-			
-			Console.WriteLine($"Connecting to {host}:{port} with API Key: {apiKey}");
-			
-			options.UnsafeUseInsecureChannelCallCredentials = true;
-			options.Credentials = ChannelCredentials.Create(ChannelCredentials.Insecure, credentials) ;
-		}
 
-		return GrpcChannel.ForAddress($"http://{host}:{port}", options);
-	}
 }
