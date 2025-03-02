@@ -79,7 +79,7 @@ namespace Client.ViewModels
             try
             {
                 Profiles.Clear();
-                string folderPath = LoadFile.LoadFolder("Profiles");
+                string folderPath = LoadFile.LoadFolder("Resources/Profiles");
                 string[] files = Directory.GetFiles(folderPath, "*.json");
 
                 var loadedProfiles = new List<Profile>();

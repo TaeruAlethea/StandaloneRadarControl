@@ -13,7 +13,7 @@ namespace Client.Models
         {
             try
             {
-                string filePath = LoadFile.Load("Sounds", fileName);
+                string filePath = LoadFile.Load("Resources/Sounds", fileName);
                 await Task.Run(() =>
                 {
                     using (var audioFile = new AudioFileReader(filePath))

@@ -43,8 +43,8 @@ namespace Client.Models
 
         public static JObject? GetProfileByName(string name)
         {
-            var files = Directory.GetFiles(LoadFile.LoadFolder("Profiles"), "*.json");
-            return files.AsParallel().Select(file => JObject.Parse(File.ReadAllText(LoadFile.Load("Profiles", file)))).FirstOrDefault(profile => profile["Name"]?.ToString() == name);
+            var files = Directory.GetFiles(LoadFile.LoadFolder("Resources/Profiles"), "*.json");
+            return files.AsParallel().Select(file => JObject.Parse(File.ReadAllText(LoadFile.Load("Resources/Profiles", file)))).FirstOrDefault(profile => profile["Name"]?.ToString() == name);
         }
 
         public async static Task New(string name, Window window)
@@ -71,7 +71,7 @@ namespace Client.Models
                 }
             };
             string serialized = JsonConvert.SerializeObject(profile, Formatting.Indented);
-            await Task.Run(() => File.WriteAllText(LoadFile.Load("Profiles", $"{GenerateUniqueHash()}.json"), serialized));
+            await Task.Run(() => File.WriteAllText(LoadFile.Load("Resources/Profiles", $"{GenerateUniqueHash()}.json"), serialized));
             Logger.Debug("Profile.New", $"Profile: \"{name}\" Successfully Created");
         }
 
@@ -79,12 +79,12 @@ namespace Client.Models
         {
             try
             {
-                string[] files = Directory.GetFiles(LoadFile.LoadFolder("Profiles"));
+                string[] files = Directory.GetFiles(LoadFile.LoadFolder("Resources/Profiles"));
                 foreach (string file in files)
                 {
                     if (file.Contains(".json"))
                     {
-                        JObject profile = JObject.Parse(File.ReadAllText(LoadFile.Load("Profiles", file)));
+                        JObject profile = JObject.Parse(File.ReadAllText(LoadFile.Load("Resources/Profiles", file)));
                         string profileName = profile["Name"]?.ToString() ?? string.Empty;
                         if (profileName != string.Empty && profileName == name)
                         {
@@ -95,7 +95,7 @@ namespace Client.Models
                             profile["Window"]["Location"]["Left"] = window.Left;
                             profile["Window"]["Location"]["Top"] = window.Top;
                             string serialized = JsonConvert.SerializeObject(profile, Formatting.Indented);
-                            await Task.Run(() => File.WriteAllText(LoadFile.Load("Profiles", $"{Path.GetFileName(file)}"), serialized));
+                            await Task.Run(() => File.WriteAllText(LoadFile.Load("Resources/Profiles", $"{Path.GetFileName(file)}"), serialized));
                             Logger.Debug("Profile.Load", $"Profile: \"{name}\" Successfully Saved");
                             return;
                         }
@@ -132,7 +132,7 @@ namespace Client.Models
                 }
             };
             string serialized = JsonConvert.SerializeObject(profile, Formatting.Indented);
-            await Task.Run(() => File.WriteAllText(LoadFile.Load("Profiles", $"{GenerateUniqueHash()}.json"), serialized));
+            await Task.Run(() => File.WriteAllText(LoadFile.Load("Resources/Profiles", $"{GenerateUniqueHash()}.json"), serialized));
             Logger.Debug("Profile.SaveAs", $"Profile: \"{name}\" Successfully Created");
         }
 
@@ -140,12 +140,12 @@ namespace Client.Models
         {
             try
             {
-                string[] files = Directory.GetFiles(LoadFile.LoadFolder("Profiles"));
+                string[] files = Directory.GetFiles(LoadFile.LoadFolder("Resources/Profiles"));
                 foreach (string file in files)
                 {
                     if (file.Contains(".json"))
                     {
-                        JObject profile = JObject.Parse(File.ReadAllText(LoadFile.Load("Profiles", file)));
+                        JObject profile = JObject.Parse(File.ReadAllText(LoadFile.Load("Resources/Profiles", file)));
                         string profileName = profile["Name"]?.ToString() ?? string.Empty;
                         if (profileName != string.Empty && profileName == name)
                         {
@@ -188,16 +188,16 @@ namespace Client.Models
         {
             try
             {
-                string[] files = Directory.GetFiles(LoadFile.LoadFolder("Profiles"), "*.json");
+                string[] files = Directory.GetFiles(LoadFile.LoadFolder("Resources/Profiles"), "*.json");
                 foreach (string file in files)
                 {
-                    JObject profile = JObject.Parse(File.ReadAllText(LoadFile.Load("Profiles", file)));
+                    JObject profile = JObject.Parse(File.ReadAllText(LoadFile.Load("Resources/Profiles", file)));
                     string profileName = profile["Name"]?.ToString() ?? string.Empty;
                     if (profileName != string.Empty && profileName == OldName)
                     {
                         profile["Name"] = Name;
                         string serialized = JsonConvert.SerializeObject(profile, Formatting.Indented);
-                        await Task.Run(() => File.WriteAllText(LoadFile.Load("Profiles", $"{Path.GetFileName(file)}"), serialized));
+                        await Task.Run(() => File.WriteAllText(LoadFile.Load("Resources/Profiles", $"{Path.GetFileName(file)}"), serialized));
                         Logger.Debug("Profile.Load", $"Profile: \"{OldName}\" Successfully Renamed To: \"{Name}\"");
                         break;
                     }
@@ -213,16 +213,16 @@ namespace Client.Models
         {
             try
             {
-                string[] files = Directory.GetFiles(LoadFile.LoadFolder("Profiles"), "*.json");
+                string[] files = Directory.GetFiles(LoadFile.LoadFolder("Resources/Profiles"), "*.json");
                 foreach (string file in files)
                 {
-                    JObject profile = JObject.Parse(File.ReadAllText(LoadFile.Load("Profiles", file)));
+                    JObject profile = JObject.Parse(File.ReadAllText(LoadFile.Load("Resources/Profiles", file)));
                     string profileName = profile["Name"]?.ToString() ?? string.Empty;
                     if (profileName != string.Empty && profileName == Name)
                     {
                         profile["Name"] = $"{Name} - Copy";
                         string serialized = JsonConvert.SerializeObject(profile, Formatting.Indented);
-                        await Task.Run(() => File.WriteAllText(LoadFile.Load("Profiles", $"{GenerateUniqueHash()}.json"), serialized));
+                        await Task.Run(() => File.WriteAllText(LoadFile.Load("Resources/Profiles", $"{GenerateUniqueHash()}.json"), serialized));
                         Logger.Debug("Profile.Load", $"Profile: \"{name}\" Successfully Copied");
                         break;
                     }
@@ -239,7 +239,7 @@ namespace Client.Models
             JObject profile = JObject.Parse(File.ReadAllText(file));
             string profileName = profile["Name"]?.ToString() ?? string.Empty;
             string serialized = JsonConvert.SerializeObject(profile, Formatting.Indented);
-            await Task.Run(() => File.WriteAllText(LoadFile.Load("Profiles", $"{GenerateUniqueHash()}.json"), serialized));
+            await Task.Run(() => File.WriteAllText(LoadFile.Load("Resources/Profiles", $"{GenerateUniqueHash()}.json"), serialized));
             Logger.Debug("Profile.Import", $"Profile: \"{profileName}\" Successfully Imported");
         }
 
@@ -256,7 +256,7 @@ namespace Client.Models
         {
             try
             {
-                string[] files = Directory.GetFiles(LoadFile.LoadFolder("Profiles"), "*.json");
+                string[] files = Directory.GetFiles(LoadFile.LoadFolder("Resources/Profiles"), "*.json");
                 foreach (string file in files)
                 {
                     try

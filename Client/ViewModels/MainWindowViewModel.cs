@@ -39,7 +39,7 @@ namespace Client.ViewModels
         {
             try
             {
-                var cursorUri = new Uri("pack://application:,,,/Cursors/Cross1.cur");
+                var cursorUri = new Uri("pack://application:,,,/Resources/Cursors/Cross1.cur");
                 var customCursor = new Cursor(Application.GetResourceStream(cursorUri).Stream);
                 CustomCursor = customCursor;
             }
