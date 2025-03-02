@@ -1,17 +1,8 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using Client.Models;
+﻿using System.Numerics;
 using Client.Views;
-using Client.ViewModels;
-using System.Windows.Annotations;
-using System.Numerics;
+using Newtonsoft.Json.Linq;
 
-namespace Client.Network
+namespace Client.Models.Network
 {
     public class TcpCallbackHandler
     {

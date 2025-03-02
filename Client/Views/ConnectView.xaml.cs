@@ -1,11 +1,11 @@
 ﻿using Client.Models;
-using Client.Network;
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using Client.Models.Network;
 
 namespace Client.Views
 {

@@ -1,20 +1,13 @@
-﻿using System;
+﻿using System.IO;
 using System.Net.Sockets;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
-using Client.Models;
-using System.Net.Http;
 using System.Windows;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.IO;
-using Newtonsoft.Json;
-using System.Threading;
 using Client.Views;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace Client.Network
+namespace Client.Models.Network
 {
     public class TcpClientHandler
     {

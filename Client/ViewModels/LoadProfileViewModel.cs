@@ -7,10 +7,9 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Input;
-using Client.Commands;
 using Client.Models;
 using Client.Views;
-using Client.Controls;
+using Client.Models.Commands;
 
 namespace Client.ViewModels
 {

@@ -6,57 +6,34 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>CRC.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\CRC.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Cursors\Cross1.cur" />
-    <None Remove="Images\Close.png" />
-    <None Remove="Images\Connect.png" />
-    <None Remove="Images\Copy.png" />
-    <None Remove="Images\Delete.png" />
-    <None Remove="Images\DisplaySettings.png" />
-    <None Remove="Images\Edit.png" />
-    <None Remove="Images\Export.png" />
-    <None Remove="Images\Help.png" />
-    <None Remove="Images\LoadProfile.png" />
-    <None Remove="Images\Maximize.png" />
-    <None Remove="Images\MaximizeMinimize.png" />
-    <None Remove="Images\Menu.png" />
-    <None Remove="Images\Minimize.png" />
-    <None Remove="Images\NewProfile.png" />
-    <None Remove="Images\QuestionBlue.png" />
-    <None Remove="Images\QuestionRed.png" />
-    <None Remove="Images\Rename.png" />
-    <None Remove="Images\SaveProfileAs.png" />
-    <None Remove="Images\Settings.png" />
+    <Content Include="Resources\CRC.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="CRC.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Cursors\Cross1.cur" />
-    <Resource Include="Images\Close.png" />
-    <Resource Include="Images\Connect.png" />
-    <Resource Include="Images\Copy.png" />
-    <Resource Include="Images\Delete.png" />
-    <Resource Include="Images\DisplaySettings.png" />
-    <Resource Include="Images\Edit.png" />
-    <Resource Include="Images\Export.png" />
-    <Resource Include="Images\Help.png" />
-    <Resource Include="Images\LoadProfile.png" />
-    <Resource Include="Images\Maximize.png" />
-    <Resource Include="Images\MaximizeMinimize.png" />
-    <Resource Include="Images\Menu.png" />
-    <Resource Include="Images\Minimize.png" />
-    <Resource Include="Images\NewProfile.png" />
-    <Resource Include="Images\QuestionBlue.png" />
-    <Resource Include="Images\QuestionRed.png" />
-    <Resource Include="Images\Rename.png" />
-    <Resource Include="Images\SaveProfileAs.png" />
-    <Resource Include="Images\Settings.png" />
+    <Resource Include="Resources\Cursors\Cross1.cur" />
+    <Resource Include="Resources\Images\Close.png" />
+    <Resource Include="Resources\Images\Connect.png" />
+    <Resource Include="Resources\Images\Copy.png" />
+    <Resource Include="Resources\Images\Delete.png" />
+    <Resource Include="Resources\Images\DisplaySettings.png" />
+    <Resource Include="Resources\Images\Edit.png" />
+    <Resource Include="Resources\Images\Export.png" />
+    <Resource Include="Resources\Images\Help.png" />
+    <Resource Include="Resources\Images\LoadProfile.png" />
+    <Resource Include="Resources\Images\Maximize.png" />
+    <Resource Include="Resources\Images\MaximizeMinimize.png" />
+    <Resource Include="Resources\Images\Menu.png" />
+    <Resource Include="Resources\Images\Minimize.png" />
+    <Resource Include="Resources\Images\NewProfile.png" />
+    <Resource Include="Resources\Images\QuestionBlue.png" />
+    <Resource Include="Resources\Images\QuestionRed.png" />
+    <Resource Include="Resources\Images\Rename.png" />
+    <Resource Include="Resources\Images\SaveProfileAs.png" />
+    <Resource Include="Resources\Images\Settings.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -64,6 +41,24 @@
     <PackageReference Include="NAudio" Version="2.2.1" />
     <PackageReference Include="SkiaSharp" Version="3.116.1" />
     <PackageReference Include="SkiaSharp.Views.WPF" Version="3.116.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Resources\Themes\Dark.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <XamlRuntime>Wpf</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Controls\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <XamlRuntime>Wpf</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Controls\Templates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <XamlRuntime>Wpf</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 
 </Project>

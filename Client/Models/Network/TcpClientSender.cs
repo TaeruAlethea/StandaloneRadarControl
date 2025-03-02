@@ -1,14 +1,9 @@
-﻿using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using System;
-using System.Net.Sockets;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
-using Client.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
-namespace Client.Network
+namespace Client.Models.Network
 {
     public class TcpClientSender
     {

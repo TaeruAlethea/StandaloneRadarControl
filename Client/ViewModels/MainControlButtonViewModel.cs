@@ -1,8 +1,8 @@
 ﻿using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls.Primitives;
-using Client.Commands;
 using Client.Models;
+using Client.Models.Commands;
 
 namespace Client.ViewModels
 {

@@ -27,7 +27,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Width="20" Height="20" Source="pack://application:,,,/Images/LoadProfile.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0"/>
+                    <Image Grid.Column="0" Width="20" Height="20" Source="pack://application:,,,/Resources/Images/LoadProfile.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0"/>
                     <TextBlock Text="Load Profile" Grid.Column="1" Foreground="{DynamicResource TextColor}" FontFamily="Consolas" FontSize="12" VerticalAlignment="Center" Margin="5,0,0,0"/>
                     <Button
                         x:Name="LoadProfileCloseButton"
