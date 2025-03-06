@@ -4,7 +4,7 @@ namespace Server.Models.Simulation;
 
 public class PassthroughSimHandler : ISimulationHandler
 {
-	private List<Unit> units;
+	private List<Unit> units { get; set; }
 	
 	public void InputData(List<Unit> inputUnits)
 	{
