@@ -32,4 +32,8 @@
     <Resource Include="Resources\Images\ShowPassword.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj" />
+  </ItemGroup>
+
 </Project>
