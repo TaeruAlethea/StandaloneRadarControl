@@ -5,6 +5,7 @@ using Server.Models;
 using Server.Models.Network;
 using Server.Models.Network.Exporters;
 using Server.Models.Network.Importer;
+using Server.Models.Simulation;
 using Server.Models.Utils;
 
 namespace Server.ViewModels;
@@ -23,6 +24,18 @@ public class MainWindowViewModel : ViewModelBase
 			OnPropertyChanged();
 		}
 	}
+	
+	private ISimulationHandler simulationHandler; // Field is proxied with a Property to Enable WPF Data Binding
+	public ISimulationHandler SimulationHandler
+	{
+		get => simulationHandler;
+		set
+		{
+			simulationHandler = value; 
+			OnPropertyChanged();
+		}
+	}
+	
 	private IDataExporterHandler dataExportHandler; // Field is proxied with a Property to Enable WPF Data Binding
 	public IDataExporterHandler DataExportHandler
 	{
@@ -50,6 +63,7 @@ public class MainWindowViewModel : ViewModelBase
 		
 		DataExportHandler = new TcpExportHandler(this);
 		DataImportHandler = new UdpImportHandler(this);
+		SimulationHandler = new PassthroughSimHandler(this);
 	}
 
 	public bool StartServer()

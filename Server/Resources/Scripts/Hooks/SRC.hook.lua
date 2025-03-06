@@ -1,5 +1,5 @@
 local hooks = {
-    lfs.writedir().."Scripts\\net\\SRCServer\\SRCServerHook.lua"
+    lfs.writedir()..[[Scripts\net\SRCServer\SRCServerHook.lua]]
 }
 
 for i = 1, #hooks do

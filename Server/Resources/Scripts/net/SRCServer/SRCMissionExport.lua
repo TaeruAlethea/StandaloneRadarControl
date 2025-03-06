@@ -2,7 +2,7 @@ package.path  = package.path..";.\\LuaSocket\\?.lua;"
 package.cpath = package.cpath..";.\\LuaSocket\\?.dll;"
 local socket = require("socket")
 local json = loadfile(lfs.currentdir().."Scripts\\JSON.lua")()
-local SRCLogger = loadfile("C:\\Users\\nicks\\Saved Games\\DCS.dcs_serverrelease\\Scripts\\net\\SRCServer\\SRCLogger.lua")()
+local SRCLogger = loadfile("C:\\Users\\roxsi\\Saved Games\\DCS\\Scripts\\net\\SRCServer\\SRCLogger.lua")()
 local logger = SRCLogger:new("SRCMissionExport.lua")
 
 logger:info("Mission Export Done", "Loading...")

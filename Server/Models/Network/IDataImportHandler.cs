@@ -14,8 +14,6 @@ public interface IDataImportHandler
 	int SrcToDcsPort { get; init; }
 	int DcsToSrcPort { get; init; }
 	
-	IDataExporterHandler ExporterHandler { get; init; }
-	
 	public bool StartHandler();
 	public bool StopHandler();
 }

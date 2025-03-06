@@ -18,5 +18,5 @@ end
 
 local udpSendSocket = socket.udp()
 local udpRecvSocket = socket.udp()
-udpRecvSocket:setsockname("*", SRC_CONFIG.DCS_UDP_PORT)
+udpRecvSocket:setsockname("*", 7600)
 udpRecvSocket:settimeout(0)

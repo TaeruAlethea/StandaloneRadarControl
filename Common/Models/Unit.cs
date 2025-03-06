@@ -13,5 +13,13 @@ public class Unit
 	public double Altitude { get; init; }
 	public double Heading { get; init; }
 	public double Speed { get; init; }
+	public Velocity Velocity { get; init; }
 	public bool Deleted { get; init; }
+}
+
+public class Velocity
+{
+	public double X { get; init; }
+	public double Y { get; init; }
+	public double Z { get; init; }
 }
