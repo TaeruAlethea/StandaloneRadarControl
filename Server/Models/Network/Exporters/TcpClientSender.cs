@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Server.Models.Utils;
 
-namespace Server.Models.Network
+namespace Server.Models.Network.Exporters
 {
     public class TcpClientSender
     {

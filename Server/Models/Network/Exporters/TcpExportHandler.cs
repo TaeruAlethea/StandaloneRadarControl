@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Net;
+﻿using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using Newtonsoft.Json;
@@ -7,7 +6,7 @@ using Newtonsoft.Json.Linq;
 using Server.Models.Utils;
 using Server.ViewModels;
 
-namespace Server.Models.Network;
+namespace Server.Models.Network.Exporters;
 
 public class TcpExportHandler : IDataExporterHandler
 {

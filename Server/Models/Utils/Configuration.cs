@@ -1,4 +1,4 @@
-﻿namespace Server.Models;
+﻿namespace Server.Models.Utils;
 
 public class Config
 {

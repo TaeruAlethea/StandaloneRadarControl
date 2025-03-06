@@ -1,4 +1,6 @@
-﻿namespace Server.Models.Network;
+﻿using Server.Models.Network.Exporters;
+
+namespace Server.Models.Network;
 
 /// <summary>
 /// Handler for bringing Data in from a Digital Combat Simulator Server.

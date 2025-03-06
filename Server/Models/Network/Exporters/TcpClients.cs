@@ -1,6 +1,6 @@
 ﻿using System.Net.Sockets;
 
-namespace Server.Models.Network
+namespace Server.Models.Network.Exporters
 {
     public class TcpClients
     {
