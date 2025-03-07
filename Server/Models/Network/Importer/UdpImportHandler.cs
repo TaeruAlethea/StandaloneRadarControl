@@ -31,7 +31,6 @@ namespace Server.Models.Network.Importer
             DcsHostName = "localhost";
             
             DcsToSrcPort = ViewModel.Config.DCS_SERVER_SETTINGS.DCS_TO_SRC_PORT;
-            Console.WriteLine(DcsToSrcPort);
         }
 
         public bool StartHandler()
@@ -77,9 +76,7 @@ namespace Server.Models.Network.Importer
                 {
                     try
                     {
-                        Console.WriteLine($"Starting UDP server at {DcsToSrcPort}");
                         if (udpClient == null) return;
-                        Console.WriteLine($"udpClient Valid");
 
                         UdpReceiveResult result = await udpClient.ReceiveAsync();
                         string json = Encoding.UTF8.GetString(result.Buffer);
