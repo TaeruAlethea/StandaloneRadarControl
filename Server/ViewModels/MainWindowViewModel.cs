@@ -74,23 +74,27 @@ public class MainWindowViewModel : ViewModelBase
 			return ServerRunning;
 		}
 
-		bool importHandler = DataImportHandler.StartHandler();
-		bool exportHandler = DataExportHandler.StartHandler();
+		bool importStarted = DataImportHandler.StartHandler();
+		bool exportStarted = DataExportHandler.StartHandler();
 
 		// If one of the other fails to start, stop the other one and return a failure to start.
-		if (importHandler && !exportHandler) { DataImportHandler.StopHandler(); }
-		if (exportHandler && !importHandler) { DataExportHandler.StopHandler(); }
+		if (importStarted && !exportStarted) { DataImportHandler.StopHandler(); }
+		if (exportStarted && !importStarted) { DataExportHandler.StopHandler(); }
 		
-		ServerRunning = importHandler && exportHandler;
+		bool simulationStarted = SimulationHandler.StartHandler();
+		if (!importStarted || !exportStarted) { SimulationHandler.StopHandler(); }
+		
+		ServerRunning = importStarted && exportStarted && simulationStarted;
 		return ServerRunning;
 	}
 
 	public bool StopServer()
 	{
-		bool importHandler = DataImportHandler.StopHandler();
-		bool exportHandler = DataExportHandler.StopHandler();
-
-		ServerRunning = importHandler && exportHandler;
+		bool importStopped = DataImportHandler.StopHandler();
+		bool exportStopped = DataExportHandler.StopHandler();
+		bool simulationStopped = SimulationHandler.StopHandler();
+		
+		ServerRunning = importStopped && exportStopped && simulationStopped;
 		return ServerRunning;
 	}
 

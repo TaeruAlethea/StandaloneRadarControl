@@ -80,8 +80,6 @@ namespace Server.Models.Network.Importer
 
                         UdpReceiveResult result = await udpClient.ReceiveAsync();
                         string json = Encoding.UTF8.GetString(result.Buffer);
-
-                        Console.WriteLine(json);
                         
                         if (string.IsNullOrWhiteSpace(json))
                             continue;
@@ -94,31 +92,31 @@ namespace Server.Models.Network.Importer
                             string callback = callbackToken.ToString();
                             if (callback == "OnGlobalContactExport")
                             {
-                                Console.WriteLine(receivedJson);
-                                
-                                Unit recievedUnit = new Unit{
-                                    Name = receivedJson["name"].Value<string>(),
-                                    Player = receivedJson["player"].Value<string>(),
-                                    GroupName = receivedJson["type"].Value<string>(),
-                                    Coalition = receivedJson["side"].Value<int>(),
-                                    Type = receivedJson["type"].Value<string>(),
-                                    Position = new Position(receivedJson["lat"].Value<double>(), receivedJson["lon"].Value<double>()),
-                                    Altitude = receivedJson["alt"].Value<double>(),
-                                    Heading = receivedJson["heading"].Value<double>(),
-                                    Speed = double.Sqrt(
-                                        (receivedJson["velocity"]["x"].Value<double>() * receivedJson["velocity"]["x"].Value<double>()) +
-                                        (receivedJson["velocity"]["y"].Value<double>() * receivedJson["velocity"]["y"].Value<double>()) +
-                                        (receivedJson["velocity"]["z"].Value<double>() * receivedJson["velocity"]["z"].Value<double>())
+                                foreach (var contact in receivedJson["contacts"])
+                                {
+                                    Unit recievedUnit = new Unit{
+                                        Name = contact["name"].Value<string>(),
+                                        Player = contact["player"].Value<string>(),
+                                        Coalition = contact["side"].Value<string>(),
+                                        Type = contact["type"].Value<string>(),
+                                        Position = new Position(contact["lat"].Value<double>(), contact["lon"].Value<double>()),
+                                        Altitude = contact["alt"].Value<double>(),
+                                        Heading = contact["heading"].Value<double>(),
+                                        Speed = double.Sqrt(
+                                            (contact["velocity"]["x"].Value<double>() * contact["velocity"]["x"].Value<double>()) +
+                                            (contact["velocity"]["y"].Value<double>() * contact["velocity"]["y"].Value<double>()) +
+                                            (contact["velocity"]["z"].Value<double>() * contact["velocity"]["z"].Value<double>())
                                         ), // Get the Magnitude of the vector
-                                    Velocity = new Velocity()
-                                    {
-                                        X = receivedJson["velocity"]["x"].Value<double>(),
-                                        Y = receivedJson["velocity"]["y"].Value<double>(),
-                                        Z = receivedJson["velocity"]["z"].Value<double>()
-                                    }
-                                };
+                                        Velocity = new Velocity()
+                                        {
+                                            X = contact["velocity"]["x"].Value<double>(),
+                                            Y = contact["velocity"]["y"].Value<double>(),
+                                            Z = contact["velocity"]["z"].Value<double>()
+                                        }
+                                    };
 
-                                ViewModel.SimulationHandler.IncomingQueue.Enqueue(recievedUnit);
+                                    ViewModel.SimulationHandler.IncomingQueue.Enqueue(recievedUnit);
+                                }
                             }
                         }
                     }

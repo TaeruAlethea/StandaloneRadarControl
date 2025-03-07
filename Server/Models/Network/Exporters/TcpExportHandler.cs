@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using Common.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Server.Models.Utils;
@@ -169,10 +170,10 @@ public class TcpExportHandler : IDataExporterHandler
         }
     }
     
-    public Task SendDataToAllClients(JObject data)
+    public Task SendDataToAllClients(Unit unitToSend)
     {
-        return TcpClientSender.SendToClients(data);
+        JObject unitJObject = JObject.FromObject(unitToSend);
+        
+        return TcpClientSender.SendToClients( unitJObject );
     }
 }
-
-

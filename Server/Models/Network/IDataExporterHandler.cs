@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Common.Models;
+using Newtonsoft.Json.Linq;
 
 namespace Server.Models.Network;
 
@@ -15,5 +16,5 @@ public interface IDataExporterHandler
 	public bool StartHandler();
 	public bool StopHandler();
 
-	public Task SendDataToAllClients(JObject data);
+	public Task SendDataToAllClients( Unit unitToSend );
 }
